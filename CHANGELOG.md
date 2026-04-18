@@ -5,18 +5,22 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Fixed
+
+- README promoted to pt-BR as default (`README.md`); English version renamed to `README.en.md`; bidirectional links between both files; content reflects current project state — OKLCH studio, color theory, i18n EN/pt-BR, `/teoria` page, stack and feature layout.
+
 ### Added
 
-- i18n EN / pt-BR: context customizado tipado zero-deps (`src/i18n/`), `LocaleProvider` com persistência em `localStorage`, `useLocale()` hook; todos os 12 componentes migrados; conteúdo completo da página `/teoria` traduzido para inglês (`entries.en.tsx`).
-- Toggle de idioma no Navbar: dois flags 🇧🇷 🇺🇸 após link GitHub, flag ativa em opacidade total e inativa esmaecida; default pt-BR.
-- Footer adicionado à página `/teoria`.
+- i18n EN / pt-BR: typed zero-deps custom context (`src/i18n/`), `LocaleProvider` with `localStorage` persistence, `useLocale()` hook; all 12 components migrated; full `/teoria` page content translated to English (`entries.en.tsx`).
+- Language toggle in Navbar: two flags 🇧🇷 🇺🇸 after GitHub link, active flag at full opacity, inactive dimmed; default pt-BR.
+- Footer added to `/teoria` page.
 
-### Added (teoria)
+### Added (theory)
 
-- Página `/teoria` (`src/pages/TheoryPage.tsx`) com 9 accordions educacionais em PT-BR: Teoria das Cores, Harmonias, Composição, WCAG e Acessibilidade, Densidade Visual, Temas Claro/Escuro, Dicas de Escala Tonal e Referências.
-- `ColorWheel` component (`src/features/theory/ColorWheel.tsx`): círculo cromático via `conic-gradient` OKLCH com 73 stops e 8 marcadores de hue posicionados geometricamente.
-- Visuais didáticos inline em `TheorySection`: `HarmonyDots` (bolinhas OKLCH por harmonia), `ColorBar603010` (barra 60/30/10), `TemperatureDemo` (quente vs fria), `SurfaceStack` (hierarquia S0–S3), `LightDarkDemo` (comparativo light/dark), `TonalScaleBar` (11 paradas), cards de contraste AA/AAA pass/fail e exemplo bad de amarelo/ciano.
-- Roteamento `react-router-dom` HashRouter com rotas `/` e `/teoria`; link "Teoria das Cores" adicionado ao `FooterSection`.
+- `/teoria` page (`src/pages/TheoryPage.tsx`) with 9 educational accordions: Color Theory, Harmonies, Composition, WCAG & Accessibility, Visual Density, Light/Dark Themes, Tonal Scale Tips, and References; available in EN and pt-BR.
+- `ColorWheel` component (`src/features/theory/ColorWheel.tsx`): chromatic wheel via OKLCH `conic-gradient` with 73 stops and 8 geometrically positioned hue markers.
+- Inline didactic visuals in `TheorySection`: `HarmonyDots` (OKLCH dots per harmony), `ColorBar603010` (60/30/10 bar), `TemperatureDemo` (warm vs cool), `SurfaceStack` (S0–S3 elevation hierarchy), `LightDarkDemo` (light/dark comparison), `TonalScaleBar` (11 stops), AA/AAA contrast pass/fail cards and bad-contrast yellow/cyan example.
+- `react-router-dom` HashRouter routing with `/` and `/teoria` routes; "Color Theory" link added to `FooterSection`.
 
 - SVG favicon (`public/favicon.svg`): 4-quadrant OKLCH color-wheel icon linked from `index.html`.
 - Live demo URL added to README header: `https://thiagocajadev.github.io/match-themes/`.

@@ -1,127 +1,132 @@
 # Match Themes
 
-**Live demo → [thiagocajadev.github.io/match-themes](https://thiagocajadev.github.io/match-themes/)**
+**Demo ao vivo → [thiagocajadev.github.io/match-themes](https://thiagocajadev.github.io/match-themes/)**
 
-OKLCH-first palette studio that exports straight to Tailwind v4 and shadcn.
+> Lendo em português. [Read in English](README.en.md)
 
-Pick a base color, choose a harmony, and ship a luminance-balanced ramp with
-contrast-checked light and dark themes — ready to paste into your stylesheet.
+Estúdio de paletas centrado em OKLCH que exporta direto para Tailwind v4 e shadcn.
+
+Escolha uma cor base, selecione uma harmonia e gere uma escala tonal com luminância equilibrada e temas claro/escuro validados por contraste — pronto para colar no seu stylesheet.
 
 ---
 
-## Color Formats
+## Formatos de cor
 
-| Format | Full name | What it describes |
+| Formato | Nome completo | O que descreve |
 | :--- | :--- | :--- |
-| **HEX** | Hexadecimal | RGB encoded in base 16. `#ff6b35` = red 255, green 107, blue 53. Universally accepted by browsers, CSS, and design tools — but carries no information about human perception. |
-| **RGB** | Red, Green, Blue | The three light channels monitors emit. Intuitive for developers, but mathematically non-uniform: adding 10 to the `G` channel in a dark tone looks like more than the same increment in a light tone. |
-| **OKLCH** | Optical Lightness, Chroma, Hue | A perceptually uniform color space. Its three axes map what the human eye actually perceives. |
+| **HEX** | Hexadecimal | RGB codificado em base 16. `#ff6b35` = vermelho 255, verde 107, azul 53. Aceito universalmente por browsers, CSS e ferramentas de design — mas não carrega informação sobre percepção humana. |
+| **RGB** | Vermelho, Verde, Azul | Os três canais de luz que os monitores emitem. Intuitivo para devs, mas matematicamente não-uniforme: adicionar 10 ao canal `G` num tom escuro parece mais do que o mesmo incremento num tom claro. |
+| **OKLCH** | Optical Lightness, Chroma, Hue | Espaço de cor perceptualmente uniforme. Seus três eixos mapeiam o que o olho humano realmente percebe. |
 
-OKLCH axes:
+Eixos OKLCH:
 
-| Axis | What it controls | Range |
+| Eixo | O que controla | Faixa |
 | :--- | :--- | :--- |
-| `L` Lightness | How bright it appears to the eye | `0` = black · `1` = white |
-| `C` Chroma | Intensity / saturation | `0` = gray · `0.4` = vivid |
-| `H` Hue | Angle on the color wheel | `0°` = red · `270°` = purple |
+| `L` Luminosidade | Quão claro parece ao olho | `0` = preto · `1` = branco |
+| `C` Croma | Intensidade / saturação | `0` = cinza · `0.4` = vívido |
+| `H` Matiz | Ângulo na roda de cores | `0°` = vermelho · `270°` = roxo |
 
 ---
 
-## Why OKLCH
+## Por que OKLCH
 
-HSL produces lightness drift across hues: a `slate-500` and a `yellow-500` look
-like different brightness levels even though the L value is identical. OKLCH
-fixes this by working in a perceptually uniform color space, so a tonal scale
-keeps consistent contrast as the hue rotates.
+O HSL produz deriva de luminância entre matizes: um `slate-500` e um `yellow-500` parecem ter brilhos diferentes mesmo com valor `L` idêntico. O OKLCH resolve isso ao operar em espaço de cor perceptualmente uniforme, mantendo contraste consistente conforme o matiz gira.
 
-Match Themes works in OKLCH end to end. Hex and RGB only appear at the render
-boundary.
+O Match Themes trabalha em OKLCH de ponta a ponta. Hex e RGB aparecem apenas na camada de renderização.
 
 ---
 
-## Features
+## Teoria das cores
 
-| Feature | Detail |
+A página `/teoria` traz uma referência educacional completa integrada ao estúdio. Cada tópico é um accordion interativo com explicações e visuais:
+
+| # | Tópico | O que cobre |
+| :--- | :--- | :--- |
+| 01 | **Teoria das Cores** | Círculo cromático, matiz, croma, luminosidade e OKLCH como espaço perceptual |
+| 02 | **Harmonias de Cor** | Complementar, análoga, triádica, tetrádica, split-complementar e monocromática |
+| 03 | **Composição de Cores** | Regra 60-30-10, temperatura de cor, proporção e equilíbrio visual |
+| 04 | **WCAG e Acessibilidade** | Níveis AA e AAA, razão de contraste mínima, padrões para UI inclusiva |
+| 06 | **Densidade Visual** | Superfícies e sobreposições em temas — elevation, camadas e sombras |
+| 07 | **Temas Claro e Escuro** | Estratégias para aproveitar ao máximo os dois modos |
+| 08 | **Dicas Práticas** | Composição com escala tonal — como montar paletas coesas na prática |
+| 09 | **Referências** | Links e fontes utilizadas |
+
+A roda de cores é renderizada em OKLCH ao vivo, refletindo a cor base ativa do estúdio.
+
+---
+
+## Funcionalidades
+
+| Funcionalidade | Detalhe |
 | :--- | :--- |
-| **7 harmonies** | Complementary · split-complementary · triadic · tetradic · analogous · monochromatic · square |
-| **11-stop tonal scale** | Stops 50 → 950 per harmony color, generated from the base via OKLCH lightness curve |
-| **WCAG contrast badges** | AA / AAA level per swatch — evaluated against both white and black, best pairing wins |
-| **`--radius` control** | 6 presets (sharp → pill); live in both showcase panels and in the exported CSS |
-| **Side-by-side showcase** | shadcn components rendered in light and dark, scoped CSS variables per panel |
-| **Tailwind v4 export** | `@theme` block · `:root` role tokens · `.dark` overrides · copy or download as `match-themes.css` |
+| **7 harmonias** | Complementar · split-complementar · triádica · tetrádica · análoga · monocromática · quadrada |
+| **Escala tonal de 11 stops** | Stops 50 → 950 por cor de harmonia, gerados a partir da base via curva de luminosidade OKLCH |
+| **Badges de contraste WCAG** | Nível AA / AAA por swatch — avaliado contra branco e preto, melhor par vence |
+| **Controle `--radius`** | 6 presets (sharp → pill); ao vivo nos painéis showcase e no CSS exportado |
+| **Showcase lado a lado** | Componentes shadcn renderizados em claro e escuro com variáveis CSS escopadas por painel |
+| **Export Tailwind v4** | Bloco `@theme` · tokens de role `:root` · overrides `.dark` · copiar ou baixar como `match-themes.css` |
+| **Internacionalização** | Interface completa em EN e pt-BR; toggle 🇧🇷🇺🇸 no navbar, persistido no localStorage |
+| **Página de teoria** | 9 accordions educacionais com visuais interativos sobre teoria das cores e acessibilidade |
 
 ---
 
 ## Design Thinking
 
-### Inspiration
+### Inspiração
 
-The layout is inspired by [tweakcn](https://tweakcn.com) — a sticky navbar that
-keeps palette controls always reachable, a collapsible showcase so the color
-grid stays front and center, and export as a modal so the workflow ends where it
-started.
+O layout é inspirado no [tweakcn](https://tweakcn.com) — navbar sticky que mantém os controles de paleta sempre acessíveis, showcase recolhível para o grid de cores ficar em foco, e export como modal para o fluxo terminar onde começou.
 
-### The product demonstrates itself
+### O produto demonstra a si mesmo
 
-The hero headline — *Match colors. Ship themes.* — is not static. The word
-**Match** is painted with the active base color and **themes** with the second
-harmony color. Switching the harmony selector repaints the headline live. The
-app is its own pitch.
+O headline do hero — *Match colors. Ship themes.* — não é estático. A palavra **Match** é pintada com a cor base ativa e **themes** com a segunda cor de harmonia. Trocar o seletor de harmonia repinta o headline ao vivo. O app é seu próprio pitch.
 
-### Closed loop
+### Loop fechado
 
-Most palette tools stop at swatch generation. Match Themes closes the
-chose → tested → applied loop natively: pick a color, verify contrast on real
-shadcn components, copy a ready-to-paste `@theme` block. No intermediate
-conversion step, no manual variable mapping.
+A maioria das ferramentas de paleta para na geração de swatches. O Match Themes fecha o loop escolheu → testou → aplicou de forma nativa: escolha uma cor, valide o contraste em componentes shadcn reais, copie um bloco `@theme` pronto para colar. Nenhuma etapa de conversão intermediária, nenhum mapeamento manual de variáveis.
 
 ---
 
-## Typography
+## Tipografia
 
-| Role | Family | Usage |
+| Papel | Família | Uso |
 | :--- | :--- | :--- |
-| Display | Libre Baskerville | `h1`–`h6`, `.font-display` — editorial weight for headings |
-| Body | Rosario | `html, body` — legible sans for prose and UI copy |
-| Mono | JetBrains Mono | `code`, `pre`, `kbd`, readouts, nav labels, eyebrows |
+| Display | Libre Baskerville | `h1`–`h6`, `.font-display` — peso editorial para headings |
+| Body | Rosario | `html, body` — sans legível para prosa e copy de UI |
+| Mono | JetBrains Mono | `code`, `pre`, `kbd`, readouts, labels de nav, eyebrows |
 
-All three are loaded from Google Fonts and mapped to Tailwind v4 theme tokens
-`--font-display`, `--font-sans`, and `--font-mono`.
+As três são carregadas do Google Fonts e mapeadas para tokens de tema Tailwind v4: `--font-display`, `--font-sans` e `--font-mono`.
 
 ---
 
 ## Stack
 
-| Layer | Technology |
+| Camada | Tecnologia |
 | :--- | :--- |
 | Build | Vite 6 · TypeScript 5 (strict) |
 | UI | React 19 · Tailwind v4 · shadcn/ui · Radix UI |
-| Math | `/src/core` — pure functions, no DOM, no React |
-| Tests | Vitest 3 · Testing Library (jsdom) · 121 tests |
-| Deploy | GitHub Actions → `gh-pages` branch |
+| Matemática | `/src/core` — funções puras, sem DOM, sem React |
+| Testes | Vitest 3 · Testing Library (jsdom) · 121 testes |
+| Deploy | GitHub Actions → branch `gh-pages` |
 
-The `/src/core` folder covers OKLCH conversion, harmonies, tonal scales,
-contrast, CSS emission, and radius tokens. Feature folders under `/src/features`
-consume `core` through hooks and components.
+A pasta `/src/core` cobre conversão OKLCH, harmonias, escalas tonais, contraste, emissão de CSS e tokens de radius. Feature folders em `/src/features` consomem o `core` via hooks e componentes.
 
 ---
 
-## Local dev
+## Dev local
 
-| Command | Effect |
+| Comando | Efeito |
 | :--- | :--- |
-| `npm install` | Install dependencies |
-| `npm run dev` | Vite dev server → `http://localhost:5173/match-themes/` |
-| `npm test` | Full Vitest suite (121 tests) |
+| `npm install` | Instala dependências |
+| `npm run dev` | Servidor de dev Vite → `http://localhost:5173/match-themes/` |
+| `npm test` | Suite completa Vitest (121 testes) |
 | `npm run typecheck` | `tsc --noEmit` |
-| `npm run build` | Production build into `dist/` |
+| `npm run build` | Build de produção em `dist/` |
 
 ---
 
 ## Deploy (GitHub Pages)
 
-The Vite `base` defaults to `/match-themes/` and can be overridden via the
-`BASE_PATH` env var at build time.
+O `base` do Vite é `/match-themes/` por padrão e pode ser sobrescrito via env var `BASE_PATH` no build.
 
 ```yaml
 - run: npm ci
@@ -133,27 +138,27 @@ The Vite `base` defaults to `/match-themes/` and can be overridden via the
     publish_dir: ./dist
 ```
 
-The Action publishes `dist/` to the `gh-pages` branch; Pages serves it at
-`https://<owner>.github.io/match-themes/`.
+A Action publica `dist/` na branch `gh-pages`; o Pages serve em `https://<owner>.github.io/match-themes/`.
 
 ---
 
-## Project layout
+## Estrutura do projeto
 
 ```
 src/
-  core/           OKLCH math · harmony · scale · contrast · theme-css · theme-radius
+  core/           matemática OKLCH · harmonia · escala · contraste · theme-css · theme-radius
   features/
-    colors/        base color input · harmony picker · format toggle · tonal grid
-    showcase/      shadcn light + dark panels · radius control · notifications card
-    navbar/        sticky nav · export dialog (copy + download)
-    hero/          palette-colored headline · Build a palette CTA
-    footer/        license · GitHub · credits
-  components/ui/   shadcn primitives
+    colors/        entrada de cor base · seletor de harmonia · toggle de formato · grid tonal
+    showcase/      painéis shadcn claro + escuro · controle de radius · card de notificações
+    navbar/        nav sticky · dialog de export (copiar + baixar)
+    hero/          headline colorido pela paleta · CTA "Criar uma paleta"
+    footer/        licença · GitHub · créditos
+    theory/        página /teoria · roda de cores OKLCH · 9 accordions educacionais
+  components/ui/   primitivos shadcn
 ```
 
 ---
 
-## License
+## Licença
 
 [ISC](LICENSE) © 2026 thiagocajadev.
