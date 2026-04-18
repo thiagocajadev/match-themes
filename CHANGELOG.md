@@ -5,6 +5,20 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ## [Unreleased]
 
+### Added
+
+- Footer: project version injected at build time via Vite `define.__APP_VERSION__`; displayed as `· v<version>` after the ISC license label.
+- `npm run info`: prints `match-themes v<version>` in the terminal.
+- README (pt-BR and EN): shields.io badges for version, deploy status, license, React, TypeScript, Tailwind v4, Vite, and Vitest.
+- `src/env.d.ts`: global declaration for `__APP_VERSION__`.
+- bumpp configured with `commit: false`, `push: false`, `tag: false` — version bump only, no automatic git operations.
+
+### Fixed
+
+- Dark showcase elevation stack: card 900→800 (S2), popover 900→700 (S3), secondary/accent/border/input 800→700; muted-foreground 300→400 for perceptual comfort.
+- Light showcase: muted-foreground 600→500, removing the semantic collision with primary (both at L=48%).
+
+
 ## [1.0.0] — 2026-04-18
 
 ### Added

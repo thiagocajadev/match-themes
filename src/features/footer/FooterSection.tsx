@@ -9,7 +9,7 @@ const COPYRIGHT_YEAR = new Date().getFullYear();
 
 export function FooterSection() {
   const { t } = useLocale();
-  const copyrightLine = `© ${COPYRIGHT_YEAR} ${PROJECT_NAME} · ${LICENSE_LABEL}`;
+  const copyrightLine = `© ${COPYRIGHT_YEAR} ${PROJECT_NAME} · ${LICENSE_LABEL} · v${__APP_VERSION__}`;
 
   const view = (
     <footer

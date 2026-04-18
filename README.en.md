@@ -4,6 +4,15 @@
 
 > Reading in English. [Leia em Português](README.md)
 
+![Version](https://img.shields.io/github/package-json/v/thiagocajadev/match-themes)
+![Deploy](https://github.com/thiagocajadev/match-themes/actions/workflows/deploy.yml/badge.svg)
+![License](https://img.shields.io/badge/license-ISC-green)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white&labelColor=20232a)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind-v4-06B6D4?logo=tailwindcss&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-3-6E9F18?logo=vitest&logoColor=white)
+
 OKLCH-first palette studio that exports straight to Tailwind v4 and shadcn.
 
 Pick a base color, choose a harmony, and ship a luminance-balanced ramp with
