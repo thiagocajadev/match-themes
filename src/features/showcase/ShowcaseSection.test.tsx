@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@/test/render';
 
 import { ColorsSection } from '@/features/colors/ColorsSection';
 import { usePaletteController } from '@/features/colors/usePalette';

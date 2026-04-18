@@ -1,5 +1,5 @@
 import { describe, expect, it, vi, beforeAll } from 'vitest';
-import { fireEvent, render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@/test/render';
 import { ColorsSection } from './ColorsSection';
 import { usePaletteController } from './usePalette';
 
