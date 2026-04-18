@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit",
     "lint": "eslint .",
+    "check": "tsc -b --noEmit && eslint . && vitest run",
     "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest",

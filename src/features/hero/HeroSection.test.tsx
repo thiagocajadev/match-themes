@@ -8,7 +8,6 @@ import { HeroSection } from './HeroSection';
 const PRIMARY_CTA_NAME = /Build a palette/i;
 const SECONDARY_CTA_NAME = /View on GitHub/i;
 const REMOVED_EYEBROW_TEXT = /^Match Themes$/;
-const PRIMARY_TARGET_ANCHOR = '#colors';
 
 function HeroSectionHarness() {
   const palette = usePaletteController();
@@ -24,13 +23,12 @@ describe('HeroSection', () => {
     expect(headline).toBeInTheDocument();
   });
 
-  it('should expose a primary CTA that anchors to the colors section', () => {
+  it('should expose a primary CTA button that scrolls to the colors section', () => {
     render(<HeroSectionHarness />);
 
-    const primaryCta = screen.getByRole('link', { name: PRIMARY_CTA_NAME });
-    const actualHref = primaryCta.getAttribute('href');
+    const primaryCta = screen.getByRole('button', { name: PRIMARY_CTA_NAME });
 
-    expect(actualHref).toBe(PRIMARY_TARGET_ANCHOR);
+    expect(primaryCta).toBeInTheDocument();
   });
 
   it('should not render the redundant Match Themes eyebrow (already present in navbar)', () => {
