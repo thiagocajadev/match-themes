@@ -7,6 +7,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ### Added
 
+- Página `/teoria` (`src/pages/TheoryPage.tsx`) com 9 accordions educacionais em PT-BR: Teoria das Cores, Harmonias, Composição, WCAG e Acessibilidade, Densidade Visual, Temas Claro/Escuro, Dicas de Escala Tonal e Referências.
+- `ColorWheel` component (`src/features/theory/ColorWheel.tsx`): círculo cromático via `conic-gradient` OKLCH com 73 stops e 8 marcadores de hue posicionados geometricamente.
+- Visuais didáticos inline em `TheorySection`: `HarmonyDots` (bolinhas OKLCH por harmonia), `ColorBar603010` (barra 60/30/10), `TemperatureDemo` (quente vs fria), `SurfaceStack` (hierarquia S0–S3), `LightDarkDemo` (comparativo light/dark), `TonalScaleBar` (11 paradas), cards de contraste AA/AAA pass/fail e exemplo bad de amarelo/ciano.
+- Roteamento `react-router-dom` HashRouter com rotas `/` e `/teoria`; link "Teoria das Cores" adicionado ao `FooterSection`.
+
 - SVG favicon (`public/favicon.svg`): 4-quadrant OKLCH color-wheel icon linked from `index.html`.
 - Live demo URL added to README header: `https://thiagocajadev.github.io/match-themes/`.
 

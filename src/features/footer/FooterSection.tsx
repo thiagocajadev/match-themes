@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const GITHUB_REPO_URL = 'https://github.com/thiagocajadev/match-themes';
 const PROJECT_NAME = 'Match Themes';
 const LICENSE_LABEL = 'ISC';
@@ -17,6 +19,12 @@ export function FooterSection() {
 
       <div className="flex flex-wrap items-center gap-4">
         <span className="italic">{TECH_CREDIT}</span>
+        <Link
+          to="/teoria"
+          className="font-medium text-stone-700 underline-offset-4 hover:underline"
+        >
+          Teoria das Cores
+        </Link>
         <a
           href={GITHUB_REPO_URL}
           target="_blank"
