@@ -1,0 +1,19 @@
+
+# Environment — never commit secrets
+.env
+.env.*
+
+# Node / build artifacts
+node_modules/
+dist/
+coverage/
+.vite/
+
+# Editor
+.DS_Store
+
+# AI artifacts — session state, not project logic
+.ai/
+CLAUDE.md
+tmp/
+temp/

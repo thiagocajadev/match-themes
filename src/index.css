@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rosario:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-display: 'Libre Baskerville', Georgia, serif;
+  --font-sans: 'Rosario', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-stone-50: oklch(0.985 0.001 106);
+  --color-stone-100: oklch(0.97 0.001 106);
+  --color-stone-200: oklch(0.923 0.003 107);
+  --color-stone-300: oklch(0.869 0.005 106);
+  --color-stone-400: oklch(0.709 0.01 106);
+  --color-stone-500: oklch(0.553 0.013 106);
+  --color-stone-600: oklch(0.444 0.011 106);
+  --color-stone-700: oklch(0.374 0.01 106);
+  --color-stone-800: oklch(0.268 0.007 106);
+  --color-stone-900: oklch(0.216 0.006 106);
+  --color-stone-950: oklch(0.147 0.004 106);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.147 0.004 106);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.147 0.004 106);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.147 0.004 106);
+  --primary: oklch(0.216 0.006 106);
+  --primary-foreground: oklch(0.985 0.001 106);
+  --secondary: oklch(0.97 0.001 106);
+  --secondary-foreground: oklch(0.216 0.006 106);
+  --muted: oklch(0.97 0.001 106);
+  --muted-foreground: oklch(0.553 0.013 106);
+  --accent: oklch(0.97 0.001 106);
+  --accent-foreground: oklch(0.216 0.006 106);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.923 0.003 107);
+  --input: oklch(0.923 0.003 107);
+  --ring: oklch(0.709 0.01 106);
+}
+
+.dark {
+  --background: oklch(0.147 0.004 106);
+  --foreground: oklch(0.985 0.001 106);
+  --card: oklch(0.216 0.006 106);
+  --card-foreground: oklch(0.985 0.001 106);
+  --popover: oklch(0.216 0.006 106);
+  --popover-foreground: oklch(0.985 0.001 106);
+  --primary: oklch(0.923 0.003 107);
+  --primary-foreground: oklch(0.216 0.006 106);
+  --secondary: oklch(0.268 0.007 106);
+  --secondary-foreground: oklch(0.985 0.001 106);
+  --muted: oklch(0.268 0.007 106);
+  --muted-foreground: oklch(0.709 0.01 106);
+  --accent: oklch(0.268 0.007 106);
+  --accent-foreground: oklch(0.985 0.001 106);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.553 0.013 106);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-display {
+  font-family: var(--font-display);
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-feature-settings: 'ss01' on, 'ss02' on;
+}
