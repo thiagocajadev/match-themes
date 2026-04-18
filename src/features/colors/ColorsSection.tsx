@@ -36,7 +36,7 @@ export function ColorsSection(props: ColorsSectionProps) {
         </p>
       </div>
 
-      <div className="flex items-start gap-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
         <BaseColorInput
           value={palette.baseColor}
           onChange={palette.setBaseColor}

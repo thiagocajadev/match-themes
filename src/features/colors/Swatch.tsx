@@ -15,7 +15,7 @@ const OKLCH_LIGHTNESS_FIELD_INDEX = 0;
 const OKLCH_FIELD_SEPARATOR = ' ';
 
 const SWATCH_BUTTON_CLASS = [
-  'relative flex h-16 w-full items-end',
+  'relative flex h-24 w-full items-end',
   'overflow-hidden rounded-md border border-stone-300 p-2',
   'cursor-pointer text-left font-mono text-[11px] tracking-tight',
   'transition focus:outline-none focus-visible:ring-2 focus-visible:ring-stone-500',

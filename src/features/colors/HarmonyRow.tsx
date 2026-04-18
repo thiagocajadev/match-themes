@@ -11,7 +11,8 @@ export function HarmonyRow(props: HarmonyRowProps) {
   const { colors, displayFormat } = props;
 
   const view = (
-    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
+    <div className="overflow-x-auto">
+    <div className="grid grid-flow-col auto-cols-[minmax(200px,1fr)] gap-2">
       {colors.map((color, position) => {
         const positionLabel = buildPositionLabel(position);
         const swatchKey = buildSwatchKey(color, position);
@@ -26,8 +27,9 @@ export function HarmonyRow(props: HarmonyRowProps) {
         );
       })}
     </div>
+    </div>
   );
-  
+
   return view;
 }
 

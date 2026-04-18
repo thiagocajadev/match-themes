@@ -7,6 +7,8 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ### Added
 
+- Mobile layout: controls row (Base / Format / Harmony) stacks vertically on viewports < 640px; `TonalScaleGrid` and `HarmonyRow` scroll horizontally with `overflow-x-auto`; swatch height increased to `h-24` on mobile; tonal grid min-width set to 1200px and harmony cards to 200px for readable labels.
+
 - `--radius` control in Showcase: 6 presets (sharp → pill) via `ThemeRadius` union in `src/core/theme-radius.ts`; live in both showcase panels and reflected in exported CSS.
 - Dynamic hero headline: "Match" colored by base OKLCH, "themes" by `harmonyColors[1]` — repaints on every harmony switch.
 - `NotificationsCard` in showcase panels: three lucide-icon entries with `Badge` variants (default / secondary / outline), replacing the Calendar card.

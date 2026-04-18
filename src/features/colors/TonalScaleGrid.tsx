@@ -29,12 +29,14 @@ export function TonalScaleGrid(props: TonalScaleGridProps) {
   const { seedColors, displayFormat } = props;
 
   const view = (
-    <div className="flex flex-col gap-2">
+    <div className="overflow-x-auto">
+      <div className="flex flex-col gap-2 min-w-[1200px]">
       {seedColors.map((seedColor, rowIndex) => {
         const scaleEntries = scale.generateTonalScale(seedColor);
         const rowKey = buildRowKey(seedColor, rowIndex);
         return <TonalScaleRow key={rowKey} entries={scaleEntries} displayFormat={displayFormat} />;
       })}
+      </div>
     </div>
   );
 
