@@ -7,6 +7,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ### Added
 
+- SVG favicon (`public/favicon.svg`): 4-quadrant OKLCH color-wheel icon linked from `index.html`.
+- Live demo URL added to README header: `https://thiagocajadev.github.io/match-themes/`.
+
+### Fixed
+
+- GitHub Actions upgraded to Node.js 24 (`node-version: '20'` → `'24'` in `deploy.yml`).
+- GitHub Pages 404 resolved: `DEFAULT_BASE_PATH` in `vite.config.ts` set to `'/match-themes/'`.
+- `TonalScaleGrid` and `HarmonyRow` horizontal scroll now confined to mobile (< `md`); desktop layout is fully responsive with no forced min-width.
+
+---
+
+### Added (prior)
+
 - Mobile layout: controls row (Base / Format / Harmony) stacks vertically on viewports < 640px; `TonalScaleGrid` and `HarmonyRow` scroll horizontally with `overflow-x-auto`; swatch height increased to `h-24` on mobile; tonal grid min-width set to 1200px and harmony cards to 200px for readable labels.
 
 - `--radius` control in Showcase: 6 presets (sharp → pill) via `ThemeRadius` union in `src/core/theme-radius.ts`; live in both showcase panels and reflected in exported CSS.

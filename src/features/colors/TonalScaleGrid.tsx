@@ -30,7 +30,7 @@ export function TonalScaleGrid(props: TonalScaleGridProps) {
 
   const view = (
     <div className="overflow-x-auto">
-      <div className="flex flex-col gap-2 min-w-[1200px]">
+      <div className="flex flex-col gap-2 min-w-[1200px] md:min-w-0">
       {seedColors.map((seedColor, rowIndex) => {
         const scaleEntries = scale.generateTonalScale(seedColor);
         const rowKey = buildRowKey(seedColor, rowIndex);

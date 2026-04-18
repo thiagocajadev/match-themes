@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
-const DEFAULT_BASE_PATH = '';
+const DEFAULT_BASE_PATH = '/match-themes/';
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 const sourceDir = path.resolve(projectRoot, 'src');
 

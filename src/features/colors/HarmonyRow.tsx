@@ -12,7 +12,7 @@ export function HarmonyRow(props: HarmonyRowProps) {
 
   const view = (
     <div className="overflow-x-auto">
-    <div className="grid grid-flow-col auto-cols-[minmax(200px,1fr)] gap-2">
+    <div className="grid grid-flow-col auto-cols-[minmax(200px,1fr)] md:auto-cols-[minmax(0,1fr)] gap-2">
       {colors.map((color, position) => {
         const positionLabel = buildPositionLabel(position);
         const swatchKey = buildSwatchKey(color, position);
