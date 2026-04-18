@@ -15,6 +15,7 @@ import { themeCss, type ThemeRoleValues } from '@/core/theme-css';
 import type { ThemeRadius } from '@/core/theme-radius';
 import type { PaletteController } from '@/features/colors/usePalette';
 import { showcaseTheme } from '@/features/showcase/theme';
+import { useLocale } from '@/i18n/LocaleContext';
 
 type ExportDialogProps = {
   palette: PaletteController;
@@ -27,15 +28,11 @@ const DOWNLOAD_FILENAME = 'match-themes.css';
 const DOWNLOAD_MIME_TYPE = 'text/css';
 const COPY_FEEDBACK_DURATION_MS = 1500;
 
-const COPY_LABELS: Record<CopyState, string> = {
-  idle: 'Copy CSS',
-  copied: 'Copied',
-};
-
 export function ExportDialog(props: ExportDialogProps) {
   const { palette, trigger } = props;
   const baseOklch = palette.baseColor.oklch;
   const radiusRem = palette.themeRadius;
+  const { t } = useLocale();
 
   const cssDocument = useMemo(() => {
     const built = buildCssDocument(baseOklch, radiusRem);
@@ -59,22 +56,19 @@ export function ExportDialog(props: ExportDialogProps) {
     downloadCssDocument(cssDocument);
   }, [cssDocument]);
 
-  const copyLabel = COPY_LABELS[copyState];
+  const copyLabel = copyState === 'copied' ? t.export.copyCopied : t.export.copyIdle;
 
   const view = (
     <Dialog>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Export theme</DialogTitle>
-          <DialogDescription>
-            Drop this block into your Tailwind v4 stylesheet — matches shadcn
-            role tokens in light and dark.
-          </DialogDescription>
+          <DialogTitle>{t.export.dialogTitle}</DialogTitle>
+          <DialogDescription>{t.export.dialogDescription}</DialogDescription>
         </DialogHeader>
 
         <pre
-          aria-label="Theme CSS preview"
+          aria-label={t.export.previewAriaLabel}
           className="max-h-96 overflow-auto rounded-md bg-stone-900 p-4 font-mono text-xs leading-relaxed text-stone-100"
         >
           <code>{cssDocument}</code>
@@ -87,7 +81,7 @@ export function ExportDialog(props: ExportDialogProps) {
             onClick={onDownloadClick}
             aria-label={`Download ${DOWNLOAD_FILENAME}`}
           >
-            Download .css
+            {t.export.downloadButton}
           </Button>
           <Button
             type="button"

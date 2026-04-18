@@ -14,6 +14,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { themeRadius, type ThemeRadius } from '@/core/theme-radius';
+import { useLocale } from '@/i18n/LocaleContext';
 import { cn } from '@/lib/utils';
 
 import type { ShowcaseMode, ShowcaseVariables } from './theme';
@@ -26,14 +27,12 @@ type ShowcasePanelProps = {
 
 const RADIUS_VARIABLE_NAME = '--radius';
 
-const MODE_COPY: Record<ShowcaseMode, { label: string; badge: string }> = {
-  light: { label: 'Light theme', badge: 'light' },
-  dark: { label: 'Dark theme', badge: 'dark' },
-};
-
 export function ShowcasePanel(props: ShowcasePanelProps) {
   const { mode, variables, radiusRem } = props;
-  const modeCopy = MODE_COPY[mode];
+  const { t } = useLocale();
+
+  const label = mode === 'light' ? t.showcase.lightLabel : t.showcase.darkLabel;
+  const badge = mode === 'light' ? t.showcase.lightBadge : t.showcase.darkBadge;
 
   const isDark = mode === 'dark';
   const scopeClassName = cn(
@@ -49,16 +48,16 @@ export function ShowcasePanel(props: ShowcasePanelProps) {
 
   const view = (
     <div
-      aria-label={`${modeCopy.label} showcase`}
+      aria-label={`${label} showcase`}
       className={scopeClassName}
       style={inlineStyle}
       data-showcase-mode={mode}
     >
       <div className="flex items-center justify-between">
         <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-          {modeCopy.label}
+          {label}
         </p>
-        <Badge variant="secondary">{modeCopy.badge}</Badge>
+        <Badge variant="secondary">{badge}</Badge>
       </div>
 
       <ProductCard mode={mode} />
@@ -74,15 +73,14 @@ type ProductCardProps = {
 
 function ProductCard(props: ProductCardProps) {
   const { mode } = props;
+  const { t } = useLocale();
   const emailFieldId = `showcase-email-${mode}`;
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Join the private beta</CardTitle>
-        <CardDescription>
-          Early access for color-aware teams shipping design systems.
-        </CardDescription>
+        <CardTitle>{t.showcase.productCardTitle}</CardTitle>
+        <CardDescription>{t.showcase.productCardDescription}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="flex flex-wrap items-center gap-2">
@@ -90,62 +88,22 @@ function ProductCard(props: ProductCardProps) {
           <Badge variant="outline">OKLCH-first</Badge>
         </div>
         <div className="flex flex-col gap-2">
-          <Label htmlFor={emailFieldId}>Email</Label>
+          <Label htmlFor={emailFieldId}>{t.showcase.emailLabel}</Label>
           <Input
             id={emailFieldId}
             type="email"
-            placeholder="you@studio.com"
+            placeholder={t.showcase.emailPlaceholder}
             autoComplete="off"
           />
         </div>
       </CardContent>
       <CardFooter className="flex justify-end gap-2">
-        <Button variant="ghost">Maybe later</Button>
-        <Button>Request invite</Button>
+        <Button variant="ghost">{t.showcase.maybeButton}</Button>
+        <Button>{t.showcase.requestButton}</Button>
       </CardFooter>
     </Card>
   );
 }
-
-type NotificationEntry = {
-  id: string;
-  icon: typeof BellIcon;
-  title: string;
-  message: string;
-  timestamp: string;
-  badge: string;
-  badgeVariant: 'default' | 'secondary' | 'outline';
-};
-
-const NOTIFICATIONS: readonly NotificationEntry[] = [
-  {
-    id: 'deploy',
-    icon: CheckIcon,
-    title: 'Deploy succeeded',
-    message: 'main → production finished in 2m 41s.',
-    timestamp: '2 min ago',
-    badge: 'shipped',
-    badgeVariant: 'default',
-  },
-  {
-    id: 'review',
-    icon: MessageSquareIcon,
-    title: 'Design review requested',
-    message: 'Iris left 3 comments on the onboarding flow.',
-    timestamp: '18 min ago',
-    badge: 'design',
-    badgeVariant: 'secondary',
-  },
-  {
-    id: 'alert',
-    icon: BellIcon,
-    title: 'New beta invite',
-    message: 'Kelvin accepted the private beta invite.',
-    timestamp: '1 hr ago',
-    badge: 'invite',
-    badgeVariant: 'outline',
-  },
-];
 
 const NOTIFICATIONS_LIST_ITEM_CLASS =
   'flex items-start gap-3 rounded-md border border-border/60 p-3';
@@ -155,14 +113,46 @@ const NOTIFICATIONS_TIMESTAMP_CLASS =
   'font-mono text-[10px] uppercase tracking-widest text-muted-foreground';
 
 function NotificationsCard() {
+  const { t } = useLocale();
+
+  const notifications = [
+    {
+      id: 'deploy',
+      icon: CheckIcon,
+      title: t.showcase.deployTitle,
+      message: t.showcase.deployMessage,
+      timestamp: t.showcase.deployTimestamp,
+      badge: 'shipped',
+      badgeVariant: 'default' as const,
+    },
+    {
+      id: 'review',
+      icon: MessageSquareIcon,
+      title: t.showcase.reviewTitle,
+      message: t.showcase.reviewMessage,
+      timestamp: t.showcase.reviewTimestamp,
+      badge: 'design',
+      badgeVariant: 'secondary' as const,
+    },
+    {
+      id: 'alert',
+      icon: BellIcon,
+      title: t.showcase.alertTitle,
+      message: t.showcase.alertMessage,
+      timestamp: t.showcase.alertTimestamp,
+      badge: 'invite',
+      badgeVariant: 'outline' as const,
+    },
+  ];
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Team activity</CardTitle>
-        <CardDescription>Latest signals from the workspace.</CardDescription>
+        <CardTitle>{t.showcase.teamActivityTitle}</CardTitle>
+        <CardDescription>{t.showcase.teamActivityDescription}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-3">
-        {NOTIFICATIONS.map((entry) => {
+        {notifications.map((entry) => {
           const IconComponent = entry.icon;
           return (
             <div key={entry.id} className={NOTIFICATIONS_LIST_ITEM_CLASS}>
@@ -183,9 +173,9 @@ function NotificationsCard() {
       </CardContent>
       <CardFooter className="flex justify-between gap-2">
         <Button variant="ghost" size="sm">
-          Mark all read
+          {t.showcase.markAllRead}
         </Button>
-        <Button size="sm">View all</Button>
+        <Button size="sm">{t.showcase.viewAll}</Button>
       </CardFooter>
     </Card>
   );

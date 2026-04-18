@@ -1,4 +1,5 @@
 import { THEME_RADII, themeRadius, type ThemeRadius } from '@/core/theme-radius';
+import { useLocale } from '@/i18n/LocaleContext';
 
 type RadiusControlProps = {
   value: ThemeRadius;
@@ -20,20 +21,20 @@ const OPTION_BASE_CLASS = 'cursor-pointer rounded px-2.5 py-1 transition';
 const OPTION_SELECTED_CLASS = 'bg-stone-900 text-stone-50';
 const OPTION_IDLE_CLASS = 'text-stone-600 hover:text-stone-900';
 
-const RADIUS_OPTIONS: readonly RadiusOption[] = THEME_RADII.map((candidate) => {
-  const shortLabel = buildShortLabel(candidate);
-  const ariaLabel = `Radius ${themeRadius.formatRem(candidate)}`;
-
-  const option: RadiusOption = { value: candidate, shortLabel, ariaLabel };
-  return option;
-});
-
 export function RadiusControl(props: RadiusControlProps) {
   const { value, onChange } = props;
+  const { t } = useLocale();
+
+  const radiusOptions: readonly RadiusOption[] = THEME_RADII.map((candidate) => {
+    const shortLabel = buildShortLabel(candidate);
+    const ariaLabel = `${t.showcase.radiusLabel} ${themeRadius.formatRem(candidate)}`;
+    const option: RadiusOption = { value: candidate, shortLabel, ariaLabel };
+    return option;
+  });
 
   const view = (
-    <div role="radiogroup" aria-label="Theme radius" className={CONTAINER_CLASS}>
-      {RADIUS_OPTIONS.map((option) => {
+    <div role="radiogroup" aria-label={t.showcase.themeRadiusAria} className={CONTAINER_CLASS}>
+      {radiusOptions.map((option) => {
         const isSelected = option.value === value;
         const optionClassName = buildOptionClassName(isSelected);
 

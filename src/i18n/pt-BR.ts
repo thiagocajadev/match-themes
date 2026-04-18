@@ -1,0 +1,96 @@
+import type { Translations } from './types';
+
+export const ptBR: Translations = {
+  nav: {
+    brand: 'Match Themes',
+    export: 'Exportar CSS',
+    github: 'GitHub',
+    theoryLink: 'Teoria das Cores',
+    backToHome: '← Match Themes',
+    primaryNav: 'Navegação principal',
+  },
+  hero: {
+    matchWord: 'Combine',
+    headlineMiddle: ' cores. Entregue ',
+    themesWord: 'temas',
+    headlineEnd: '.',
+    lede: 'Escolha uma cor base, selecione uma harmonia e exporte um tema light + dark combinado, com contraste verificado, pronto para Tailwind v4 e shadcn.',
+    cta: 'Montar paleta',
+  },
+  colors: {
+    heading: 'Cores',
+    description: 'Selecione base, formato e harmonia. Clique em uma amostra para copiar.',
+    baseLabel: 'Base',
+    formatLabel: 'Formato',
+    harmonyLabel: 'Harmonia',
+    invalidHex: 'hex inválido',
+    pickBaseColor: 'Escolher cor base',
+    baseColorHex: 'Hex da cor base',
+    harmony: {
+      complementary: 'Complementar',
+      analogous: 'Análoga',
+      triadic: 'Triádica',
+      splitComplementary: 'Split-Complementar',
+      tetradic: 'Tetrádica',
+      square: 'Quadrada',
+      neutrals: 'Neutros',
+    },
+  },
+  showcase: {
+    heading: 'Showcase',
+    description: 'Componentes shadcn usando a paleta atual, lado a lado em light e dark.',
+    radiusLabel: 'Raio',
+    accordionLabel: 'Prévia do showcase',
+    themeRadiusAria: 'Raio do tema',
+    lightLabel: 'Tema claro',
+    darkLabel: 'Tema escuro',
+    lightBadge: 'light',
+    darkBadge: 'dark',
+    productCardTitle: 'Acesso antecipado',
+    productCardDescription:
+      'Primeiro acesso para times que criam sistemas de design baseados em cor.',
+    emailLabel: 'E-mail',
+    emailPlaceholder: 'voce@studio.com',
+    maybeButton: 'Talvez depois',
+    requestButton: 'Solicitar convite',
+    teamActivityTitle: 'Atividade do time',
+    teamActivityDescription: 'Últimas atualizações do workspace.',
+    markAllRead: 'Marcar como lidas',
+    viewAll: 'Ver tudo',
+    deployTitle: 'Deploy concluído',
+    deployMessage: 'main → production finalizado em 2m 41s.',
+    deployTimestamp: 'há 2 min',
+    reviewTitle: 'Revisão de design solicitada',
+    reviewMessage: 'Iris deixou 3 comentários no fluxo de onboarding.',
+    reviewTimestamp: 'há 18 min',
+    alertTitle: 'Novo convite beta',
+    alertMessage: 'Kelvin aceitou o convite para o beta privado.',
+    alertTimestamp: 'há 1 h',
+  },
+  export: {
+    dialogTitle: 'Exportar tema',
+    dialogDescription:
+      'Adicione este bloco ao seu stylesheet Tailwind v4 — corresponde aos tokens shadcn em light e dark.',
+    previewAriaLabel: 'Prévia do CSS do tema',
+    copyIdle: 'Copiar CSS',
+    copyCopied: 'Copiado',
+    downloadButton: 'Baixar .css',
+  },
+  footer: {
+    techCredit: 'Feito com Vite · React · Tailwind v4 · OKLCH',
+    github: 'GitHub',
+    theoryLink: 'Teoria das Cores',
+    siteFooter: 'Rodapé do site',
+  },
+  theory: {
+    pageTitle: 'Guia de teoria e prática de cor',
+    pageSubtitle:
+      'Tudo que você precisa saber para criar paletas com intenção, do círculo cromático às melhores combinações de paradas tonais para temas claro e escuro.',
+    intro1:
+      'Todo matiz tem uma posição no círculo cromático. Harmonias surgem de relações geométricas entre essas posições: opostos criam tensão, vizinhos criam fluidez, equidistantes criam equilíbrio.',
+    intro2:
+      'No espaço OKLCH, o círculo é perceptualmente uniforme: cada salto de hue representa a mesma quantidade de mudança visual, independentemente do matiz. Isso torna as relações entre cores previsíveis e as harmonias matematicamente exatas.',
+    intro3:
+      'Os acordeões abaixo cobrem teoria, harmonias, composição, densidade visual, temas claro e escuro e dicas práticas de combinação de paradas tonais.',
+  },
+};

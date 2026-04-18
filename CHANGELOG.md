@@ -7,6 +7,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ### Added
 
+- i18n EN / pt-BR: context customizado tipado zero-deps (`src/i18n/`), `LocaleProvider` com persistência em `localStorage`, `useLocale()` hook; todos os 12 componentes migrados; conteúdo completo da página `/teoria` traduzido para inglês (`entries.en.tsx`).
+- Toggle de idioma no Navbar: dois flags 🇧🇷 🇺🇸 após link GitHub, flag ativa em opacidade total e inativa esmaecida; default pt-BR.
+- Footer adicionado à página `/teoria`.
+
+### Added (teoria)
+
 - Página `/teoria` (`src/pages/TheoryPage.tsx`) com 9 accordions educacionais em PT-BR: Teoria das Cores, Harmonias, Composição, WCAG e Acessibilidade, Densidade Visual, Temas Claro/Escuro, Dicas de Escala Tonal e Referências.
 - `ColorWheel` component (`src/features/theory/ColorWheel.tsx`): círculo cromático via `conic-gradient` OKLCH com 73 stops e 8 marcadores de hue posicionados geometricamente.
 - Visuais didáticos inline em `TheorySection`: `HarmonyDots` (bolinhas OKLCH por harmonia), `ColorBar603010` (barra 60/30/10), `TemperatureDemo` (quente vs fria), `SurfaceStack` (hierarquia S0–S3), `LightDarkDemo` (comparativo light/dark), `TonalScaleBar` (11 paradas), cards de contraste AA/AAA pass/fail e exemplo bad de amarelo/ciano.

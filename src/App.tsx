@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { useLocale } from '@/i18n/LocaleContext';
 
 import { ColorsSection } from './features/colors/ColorsSection';
 import { usePaletteController } from './features/colors/usePalette';
@@ -13,10 +14,10 @@ import { NavbarSection } from './features/navbar/NavbarSection';
 import { ShowcaseSection } from './features/showcase/ShowcaseSection';
 
 const SHOWCASE_ACCORDION_VALUE = 'showcase';
-const SHOWCASE_ACCORDION_LABEL = 'Showcase preview';
 
 export function App() {
   const palette = usePaletteController();
+  const { t } = useLocale();
 
   const view = (
     <div className="min-h-screen bg-stone-50 text-stone-900">
@@ -30,7 +31,7 @@ export function App() {
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value={SHOWCASE_ACCORDION_VALUE}>
               <AccordionTrigger className="font-mono text-[11px] uppercase tracking-widest text-stone-500">
-                {SHOWCASE_ACCORDION_LABEL}
+                {t.showcase.accordionLabel}
               </AccordionTrigger>
               <AccordionContent>
                 <ShowcaseSection palette={palette} />

@@ -1,6 +1,8 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter, Route, Routes } from 'react-router-dom';
+
+import { LocaleProvider } from './i18n/LocaleContext';
 import { App } from './App';
 import { TheoryPage } from './pages/TheoryPage';
 import './index.css';
@@ -13,11 +15,13 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/teoria" element={<TheoryPage />} />
-      </Routes>
-    </HashRouter>
+    <LocaleProvider>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/teoria" element={<TheoryPage />} />
+        </Routes>
+      </HashRouter>
+    </LocaleProvider>
   </StrictMode>,
 );

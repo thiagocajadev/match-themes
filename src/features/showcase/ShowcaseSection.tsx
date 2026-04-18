@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { scale } from '@/core/scale';
 import type { PaletteController } from '@/features/colors/usePalette';
 import { RadiusControl } from '@/features/navbar/RadiusControl';
+import { useLocale } from '@/i18n/LocaleContext';
 
 import { ShowcasePanel } from './ShowcasePanel';
 import { showcaseTheme } from './theme';
@@ -11,13 +12,13 @@ type ShowcaseSectionProps = {
   palette: PaletteController;
 };
 
-const RADIUS_LABEL = 'Radius';
 const RADIUS_LABEL_CLASSNAME =
   'font-mono text-[11px] uppercase tracking-widest text-stone-500';
 
 export function ShowcaseSection(props: ShowcaseSectionProps) {
   const { palette } = props;
   const baseOklch = palette.baseColor.oklch;
+  const { t } = useLocale();
 
   const theme = useMemo(() => {
     const tonalScale = scale.generateTonalScale(baseOklch);
@@ -39,32 +40,19 @@ export function ShowcaseSection(props: ShowcaseSectionProps) {
           id="showcase-heading"
           className="font-mono text-[11px] uppercase tracking-widest text-stone-500"
         >
-          Showcase
+          {t.showcase.heading}
         </h2>
-        <p className="text-stone-600 italic">
-          Shadcn components driven by the current palette, side by side in light and dark.
-        </p>
+        <p className="italic text-stone-600">{t.showcase.description}</p>
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <span className={RADIUS_LABEL_CLASSNAME}>{RADIUS_LABEL}</span>
-        <RadiusControl
-          value={palette.themeRadius}
-          onChange={palette.setThemeRadius}
-        />
+        <span className={RADIUS_LABEL_CLASSNAME}>{t.showcase.radiusLabel}</span>
+        <RadiusControl value={palette.themeRadius} onChange={palette.setThemeRadius} />
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <ShowcasePanel
-          mode="light"
-          variables={theme.light}
-          radiusRem={palette.themeRadius}
-        />
-        <ShowcasePanel
-          mode="dark"
-          variables={theme.dark}
-          radiusRem={palette.themeRadius}
-        />
+        <ShowcasePanel mode="light" variables={theme.light} radiusRem={palette.themeRadius} />
+        <ShowcasePanel mode="dark" variables={theme.dark} radiusRem={palette.themeRadius} />
       </div>
     </section>
   );

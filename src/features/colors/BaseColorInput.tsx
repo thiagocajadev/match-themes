@@ -1,8 +1,9 @@
 import { useState, type ChangeEvent } from 'react';
+
+import { useLocale } from '@/i18n/LocaleContext';
 import { parse } from '../../core/parse';
 import type { BaseColor } from './view';
 
-const INVALID_HEX_MESSAGE = 'invalid hex';
 const HASH_PREFIX = '#';
 
 const COLOR_PICKER_CLASS =
@@ -17,8 +18,7 @@ const HEX_FIELD_CLASS = [
 const FIELD_LABEL_CLASS =
   'font-mono text-[11px] uppercase tracking-widest text-stone-500';
 
-const INVALID_HINT_CLASSNAME =
-  'font-mono text-xs tracking-tight text-red-600';
+const INVALID_HINT_CLASSNAME = 'font-mono text-xs tracking-tight text-red-600';
 
 type BaseColorInputProps = {
   value: BaseColor;
@@ -27,6 +27,7 @@ type BaseColorInputProps = {
 
 export function BaseColorInput(props: BaseColorInputProps) {
   const { value, onChange } = props;
+  const { t } = useLocale();
 
   const [hexDraft, setHexDraft] = useState<string>(value.hex);
 
@@ -65,19 +66,19 @@ export function BaseColorInput(props: BaseColorInputProps) {
   const view = (
     <div className="flex flex-col gap-2">
       <label className="flex items-center gap-3">
-        <span className={FIELD_LABEL_CLASS}>Base</span>
+        <span className={FIELD_LABEL_CLASS}>{t.colors.baseLabel}</span>
         <input
           type="color"
           value={value.hex}
           onChange={handlePickerChange}
-          aria-label="Pick base color"
+          aria-label={t.colors.pickBaseColor}
           className={COLOR_PICKER_CLASS}
         />
         <input
           type="text"
           value={hexDraft}
           onChange={handleHexFieldChange}
-          aria-label="Base color hex"
+          aria-label={t.colors.baseColorHex}
           spellCheck={false}
           autoComplete="off"
           className={HEX_FIELD_CLASS}
@@ -85,7 +86,7 @@ export function BaseColorInput(props: BaseColorInputProps) {
       </label>
       {shouldShowInvalidHint && (
         <p aria-live="polite" className={INVALID_HINT_CLASSNAME}>
-          {INVALID_HEX_MESSAGE}
+          {t.colors.invalidHex}
         </p>
       )}
     </div>
@@ -96,9 +97,9 @@ export function BaseColorInput(props: BaseColorInputProps) {
 function normalizeHex(rawHex: string): string {
   const trimmed = rawHex.trim();
   const hasHashPrefix = trimmed.startsWith(HASH_PREFIX);
-  
+
   const prefixed = hasHashPrefix ? trimmed : `${HASH_PREFIX}${trimmed}`;
   const lowered = prefixed.toLowerCase();
-  
+
   return lowered;
 }
