@@ -9,8 +9,12 @@ type HeroSectionProps = {
   palette: PaletteController;
 };
 
-const PRIMARY_TARGET_ANCHOR = '#colors';
+const PRIMARY_TARGET_ID = 'colors';
 const HARMONY_PAIR_INDEX = 1;
+
+function scrollToColors() {
+  document.getElementById(PRIMARY_TARGET_ID)?.scrollIntoView({ behavior: 'smooth' });
+}
 
 export function HeroSection(props: HeroSectionProps) {
   const { palette } = props;
@@ -37,8 +41,8 @@ export function HeroSection(props: HeroSectionProps) {
       </p>
 
       <div className="flex flex-wrap items-center gap-3 pt-2">
-        <Button asChild size="lg">
-          <a href={PRIMARY_TARGET_ANCHOR}>{t.hero.cta}</a>
+        <Button size="lg" onClick={scrollToColors}>
+          {t.hero.cta}
         </Button>
       </div>
     </section>

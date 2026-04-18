@@ -15,6 +15,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [S
 
 ### Fixed
 
+- Hero CTA "Montar paleta": `<a href="#colors">` interpreted as route `/colors` by HashRouter; replaced with `scrollIntoView` button.
 - Dark showcase elevation stack: card 900→800 (S2), popover 900→700 (S3), secondary/accent/border/input 800→700; muted-foreground 300→400 for perceptual comfort.
 - Light showcase: muted-foreground 600→500, removing the semantic collision with primary (both at L=48%).
 

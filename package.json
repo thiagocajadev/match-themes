@@ -1,7 +1,7 @@
 {
   "name": "match-themes",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.4",
   "type": "module",
   "description": "OKLCH-first palette studio that exports directly to Tailwind v4 / shadcn",
   "license": "ISC",
